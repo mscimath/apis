@@ -1,13 +1,6 @@
 {
     "lyrics" : [
-        {
-            "title": "bez tytułu",
-            "lyric":  [
-                {"Głębia życia pcha nas w świat niczym światło gwiazd"},
-                {"Życie ma wiele prawd, Życie to milion szans"}    
-            ],            
-            "source": "what notebook?"
-        },
+        
         {
             "title": "two",
             "lyric":  [],            
