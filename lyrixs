@@ -2,7 +2,9 @@
     "lyrics" : [
         {
             "title": "bez tutułu",
-            "lyrics": [],
+            "lyrics": [
+                "line", "line", "line"
+            ],
             "source": "paper"
         },
         {
