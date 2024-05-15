@@ -20,12 +20,13 @@ function [y, w] = filtr_wycinajacy_adaptacyjny(x, d, M, mu)
   N = length(x);
   y = zeros(1, N);
   w = zeros(M, 1);
+  czynnik_normalizacji = mean(x.^2);
 
   for n = M:N
     x_n = x(n:-1:n-M+1);
     y(n) = w'*x_n;
     e = d(n) - y(n);
-    w = w+(mu/(x_n*x_n')) * e * x_n;
+    w = w+(mu/czynnik_normalizacji) * e * x_n;
   end
 end
 
