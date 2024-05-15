@@ -1,14 +1,23 @@
+x = randn(100, 1);
+d = randn(100, 1);
+M = 10;
+mu = 0.01;
+
+[y, w] = filtr_wycinajacy_adaptacyjny(x, d, M, mu);
+disp('Sygnal:');
+disp(y);
+
 function [y, w] = filtr_wycinajacy_adaptacyjny(x, d, M, mu)
   N = length(x);
   y = zeros(1, N);
   w = zeros(M, 1);
 
   for n = M:N
-    x_n = x(n:-1:n-M+1;
+    x_n = x(n:-1:n-M+1);
     y(n) = w'*x_n;
     e = d(n) - y(n);
     w = w+(mu/(x_n*x_n')) * e * x_n;
   end
 end
 
-x = randn(100, 1);
+
