@@ -1,3 +1,10 @@
+plik_healthy = 'emg_healthy.txt';
+data_healthy = load(plik healthy);
+plik_neuropathy = 'emg_neuropathy.txt;'
+data_neuropathy = load(plik_neuropathy);
+url = 'https://raw.githubusercontent.com/mscimath/apis/main/emg_signals-myopathy.txt';
+data_myopathy = webread(url);
+
 x = randn(100, 1);
 d = randn(100, 1);
 M = 10;
