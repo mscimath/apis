@@ -11,8 +11,10 @@ M = 10;
 mu = 0.01;
 
 [y, w] = filtr_wycinajacy_adaptacyjny(x, d, M, mu);
-disp('Sygnal:');
+disp('Sygnal wyjsciowy:');
 disp(y);
+disp('Wektory wag filtra:');
+disp(w);
 
 function [y, w] = filtr_wycinajacy_adaptacyjny(x, d, M, mu)
   N = length(x);
