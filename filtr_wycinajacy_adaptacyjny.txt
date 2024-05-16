@@ -5,10 +5,39 @@ data_neuropathy = load(plik_neuropathy);
 url = 'https://raw.githubusercontent.com/mscimath/apis/main/emg_signals-myopathy.txt';
 data_myopathy = webread(url);
 
-x = randn(100, 1);
-d = randn(100, 1);
+%x = randn(100, 1);
+%d = randn(100, 1);
 M = 10;
 mu = 0.01;
+
+%Testowanie filtru na danych healthy
+disp('Testowanie filtru na danych od zdrowych ludzi:')
+[y_healthy, ~] = filtr_wycinajacy_adaptacyjny(data_healthy, data_healthy, M, mu);
+
+%Testowanie filtru na danych neuropathy
+disp('Testowanie filtru na danych neuropathy:');
+[y_neuropathy, ~] = filtr_wycinajacy_adaptacyjny(data_neuropathy, data_neuropathy, M, mu);
+
+%Testowanie filtru na danych myopathy
+disp('Testowanie filtru na danych myopathy:');
+[y_myopathy, ~] = filtr_wycinajacy_adaptacyjny(data_neuropathy, data_neuropathy, M, mu);
+
+%Wyswietlenie wynikow
+figure;
+subplot(3, 1, 1);
+plot(data_healthy, 'b'); hold on;
+plot(y_healthy, 'r'); hold off;
+title('Healthy - Sygnał oryginalny vs sygnał odfiltrowany');
+subplot(3, 1, 2);
+plot(data_neuropathy, 'b'); hold on;
+plot(y_neuropathy, 'r'); hold off;
+title('Neuropathy - Sygnał oryginalny vs sygnał odfiltrowany');
+subplot(3, 1, 3);
+plot(data_myopathy, 'b'); hold on;
+plot(y_myopathy, 'r'); hold off;
+title('Myopathy - Sygnał oryginalny vs sygnał odfiltrowany');
+
+
 
 [y, w] = filtr_wycinajacy_adaptacyjny(x, d, M, mu);
 disp('Sygnal wyjsciowy:');
