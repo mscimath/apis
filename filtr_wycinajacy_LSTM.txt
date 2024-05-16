@@ -1,0 +1,7 @@
+% Wczytaj dane z pliku
+plik_healthy = 'emg_healthy.txt';
+data_healthy = load(plik_healthy);
+plik_neuropathy = 'emg_neuropathy.txt';
+data_neuropathy = load(plik_neuropathy);
+% Wczytaj dane z linku
+url
