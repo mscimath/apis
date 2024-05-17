@@ -4,4 +4,53 @@ data_healthy = load(plik_healthy);
 plik_neuropathy = 'emg_neuropathy.txt';
 data_neuropathy = load(plik_neuropathy);
 % Wczytaj dane z linku
-url
+url = 'https://raw.githubusercontent.com/mscimath/apis/main/emg_signals-myopathy.txt';
+data_myopathy = webread(url);
+data = data_myopathy;
+
+% Dlugosc danych
+N = length(data);
+N_healthy = length(data_healthy);
+
+% Dlugosc sekwencji
+sekw_dlugosc = 100;
+
+% healthy - Liczba sekwencji
+sekw_liczba_healthy = floor(N_healthy / sekw_dlugosc);
+% healthy - Podzial danych na sekwencje
+sekwencje_healthy = cell(sekw_liczba_healthy, );
+for i = 1:sekw_liczba_healthy
+   start_indeks_healthy = (i-1)*sekw_dlugosc + 1;
+   end_indeks_healthy = i * sekw_dlugosc;
+   sekwencje_healthy{i} = data_healthy(start_indeks_healthy, end_indeks_healthy);
+end
+% Wyswietlenie pierwszej sekwencji healthy
+disp(sekwencje_healthy{1});
+
+% Przesuniecie miedzy kolejnymi sekwencjami
+przesuniecie = 50; 
+
+% Liczba sekwencji
+sekw_liczba = floor((N - sekw_dlugosc) / przesuniecie) + 1;
+
+% Inicjalizacja sekwencji wejsciowych i wyjsciowych
+X_sekwencje = cell(sekw_liczba, 1);
+Y_sekwencje = cell(sekw_liczba, 1);
+
+for i = i:sekw_liczba
+   start_indeks = (i-1)*przesuniecie + 1;
+   end_indeks = start_indeks + sekw_dlugosc - 1;
+   X_sekwencje{1} = data(start_indeks:end_indeks);
+
+end
+
+% Wyswietlenie pierwszej sekwencji wejsciowej
+disp(X_sekwencje{1})
+
+
+
+
+
+
+
+
