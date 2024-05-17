@@ -40,7 +40,7 @@ Y_sekwencje = cell(sekw_liczba, 1);
 for i = i:sekw_liczba
    start_indeks = (i-1)*przesuniecie + 1;
    end_indeks = start_indeks + sekw_dlugosc - 1;
-   X_sekwencje{1} = data(start_indeks:end_indeks);
+   X_sekwencje{i} = data(start_indeks:end_indeks);
 
 end
 
